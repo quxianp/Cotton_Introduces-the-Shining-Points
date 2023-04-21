@@ -2,3 +2,11 @@ Fri Apr 21 11:22:44 2023
  input:1
  output:.
 
+Fri Apr 21 11:29:57 2023
+ input:6
+ output:......
+
+Fri Apr 21 11:30:02 2023
+ input:0
+ output:
+

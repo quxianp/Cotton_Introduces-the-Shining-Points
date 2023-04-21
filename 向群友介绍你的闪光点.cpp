@@ -8,6 +8,7 @@ using namespace std;
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 long long n;
+double t;
 
 void Shining_Point(long long n){
 	for(int i=0;i<n;i++) cout<<".";
@@ -25,7 +26,7 @@ void information(){
 	time(&timep);
 	p=localtime(&timep);
 	cout<<"Source Code Address:https://github.com/quxianp/Cotton_Introduces-the-Shining-Points/"<<endl;
-	cout<<"Cotton_Introduces-the-Shining-Points v1.1"<<endl;
+	cout<<"Cotton_Introduces-the-Shining-Points v1.2"<<endl;
 	cout<<"Now Time:";
 	printf("%d/%d/%d %02d:%02d:%02d\n\n", 1900 + p->tm_year, 1+ p->tm_mon, p->tm_mday,p->tm_hour, p->tm_min, p->tm_sec); 
 	cout<<"===== Start Running ====="<<endl<<endl;
@@ -53,12 +54,19 @@ void text(long long n){
 	dataFile.close();
 }
 
-
 int main(int argc, char** argv) {
 	//CreateDirectory(TEXT("Memories"),NULL);
 	information();
-	cout<<"你要向群友介绍多少个闪光点：";
-	cin>>n;
+	while(1!=2){
+		cout<<"你要向群友介绍多少个闪光点：";
+		cin>>t;
+		if(t<0) cout<<"输入错误，请输入正数！"<<endl<<endl;
+		else if(t-(int)t==0) break;
+		//else cout<<"Wrong input,please try again and enter an integer!"<<endl<<endl; 
+		else cout<<"输入错误，请输入整数！"<<endl<<endl;
+		
+	}
+	n=(int)t;
 	char a[n];
 	text(n);
 	cout<<"闪光点：";
