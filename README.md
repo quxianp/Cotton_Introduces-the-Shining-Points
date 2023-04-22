@@ -14,6 +14,8 @@
 
 2023-4-21 支持判断输入是否为正整数并重新输入
 
+2023-4-22 支持彩色输出与查看历史记录
+
 ---
 
 > https://user-images.githubusercontent.com/123958112/227768522-a9c1eeab-ecf5-41fd-8328-20f2f5706abb.mp4
