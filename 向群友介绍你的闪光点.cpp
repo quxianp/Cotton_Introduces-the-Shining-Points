@@ -22,7 +22,7 @@ void white_print(string out) {
 void Shining_Point(long long n) {
 	for(int i=0; i<n; i++) white_print("."); //cout<<".";
 	ofstream dataFile;
-	dataFile.open("dataFile.txt", ofstream::app);
+	dataFile.open("dataFile.ini", ofstream::app);
 	dataFile<<" output:";
 	for(int i=0; i<n; i++) dataFile<<".";
 	dataFile<<endl<<endl;
@@ -42,7 +42,7 @@ void information() {
 	//cout<<"Source Code Address:https://github.com/quxianp/Cotton_Introduces-the-Shining-Points/"<<endl;
 	green_print("Source Code Address:https://github.com/quxianp/Cotton_Introduces-the-Shining-Points/",1);
 	//cout<<"Cotton_Introduces-the-Shining-Points v1.2"<<endl;
-	green_print("Cotton_Introduces-the-Shining-Points v2.0",1);
+	green_print("Cotton_Introduces-the-Shining-Points v2.1",1);
 	//cout<<"Now Time:";
 	green_print("Now Time:",0);
 	//printf("%d/%d/%d %02d:%02d:%02d\n\n", 1900 + p->tm_year, 1+ p->tm_mon, p->tm_mday,p->tm_hour, p->tm_min, p->tm_sec);
@@ -58,24 +58,24 @@ bool isFileExists_ifstream(string& name) {
 }
 
 void Decide() {
-	string filename = "dataFile.txt";
+	string filename = "dataFile.ini";
 	bool ret = isFileExists_ifstream(filename);
-	if (!ret) fstream file("dataFile.txt", ios::out);
+	if (!ret) fstream file("dataFile.ini", ios::out);
 }
 
 void text(long long n) {
 	time_t timep;
 	time(&timep);
 	ofstream dataFile;
-	dataFile.open("dataFile.txt", ofstream::app);
-	//fstream file("dataFile.txt", ios::out);
+	dataFile.open("dataFile.ini", ofstream::app);
+	//fstream file("dataFile.ini", ios::out);
 	dataFile<<ctime(&timep)<<" "<<"input:"<<n<<endl;
 	dataFile.close();
 }
 
 void PrintHistory() {
 	ifstream ifs;
-	ifs.open("dataFile.txt", ios::in);
+	ifs.open("dataFile.ini", ios::in);
 	char c;
 	ifs >> c;
 	if (ifs.eof()) {
@@ -84,7 +84,7 @@ void PrintHistory() {
 		return;
 	} else {
 		cout << "==========================" <<endl<<endl<<endl;
-		ifstream inFile("dataFile.txt");
+		ifstream inFile("dataFile.ini");
 		string str;
 		while (inFile.good()) {
 			getline(inFile,str);
@@ -117,7 +117,7 @@ void History() {
 
 int main(int argc, char** argv) {
 	Decide();
-	system("title Introduce_Your_Shining_Point_to_Your_Group-v2.0");
+	system("title Introduce_Your_Shining_Point_to_Your_Group-v2.1");
 	//CreateDirectory(TEXT("Memories"),NULL);
 	//system("color 0A"); //µ­ÂÌÉ«
 	information();
