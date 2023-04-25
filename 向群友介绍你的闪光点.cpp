@@ -7,13 +7,13 @@
 #include <conio.h>
 #include <stdlib.h>
 //#include "stdafx.h"
-#include<cstdlib>
+#include <cstdlib>
 using namespace std;
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
-long long n;
+unsigned long long n;
 int ch;
-double t;
+long double t;
 
 void white_print(string out) {
 	cout << "\033[37;1m" << out << "\033[0m" ;
@@ -42,7 +42,7 @@ void information() {
 	//cout<<"Source Code Address:https://github.com/quxianp/Cotton_Introduces-the-Shining-Points/"<<endl;
 	green_print("Source Code Address:https://github.com/quxianp/Cotton_Introduces-the-Shining-Points/",1);
 	//cout<<"Cotton_Introduces-the-Shining-Points v1.2"<<endl;
-	green_print("Cotton_Introduces-the-Shining-Points v2.1",1);
+	green_print("Cotton_Introduces-the-Shining-Points v2.2",1);
 	//cout<<"Now Time:";
 	green_print("Now Time:",0);
 	//printf("%d/%d/%d %02d:%02d:%02d\n\n", 1900 + p->tm_year, 1+ p->tm_mon, p->tm_mday,p->tm_hour, p->tm_min, p->tm_sec);
@@ -99,11 +99,12 @@ void PrintHistory() {
 
 void History() {
 	int ks=0;
-	cout<<"\033[35;1m*是否查看历史记录？*\033[0m"<<endl<<"\033[35;1m*按下Enter键查看历史记录*\033[0m"<<endl<<"\033[35;1m*按下ESC键进入主程序*\033[0m"<<endl<<endl<<endl;
+	cout<<"\033[35;1m*是否查看历史记录？*\033[0m"<<endl<<"\033[35;1m*按下Enter键查看历史记录*\033[0m"<<endl<<"\033[35;1m*按下ESC键进入主程序*\033[0m"<<endl<<"\033[35;1m*按下Tab键退出程序*\033[0m"<<endl<<endl;
 	while (0!=1) {
 		if (_kbhit()) {
 			ch = _getch();
 			if (ch == 27) break;
+			if (ch == 9) exit(0);
 			if(ks==0) {
 				if (ch == 13) {
 					PrintHistory();
@@ -117,7 +118,7 @@ void History() {
 
 int main(int argc, char** argv) {
 	Decide();
-	system("title Introduce_Your_Shining_Point_to_Your_Group-v2.1");
+	system("title Introduce_Your_Shining_Point_to_Your_Group-v2.2");
 	//CreateDirectory(TEXT("Memories"),NULL);
 	//system("color 0A"); //淡绿色
 	information();
@@ -128,15 +129,14 @@ int main(int argc, char** argv) {
 	//system("color 0F"); //亮白色
 	while(1!=2) {
 		//cout<<"你要向群友介绍多少个闪光点：";
-		white_print("你要向群友介绍多少个闪光点：");
+		white_print("你要向群友介绍多少个闪光点（0≤个数≤9223372036854775807）：");
 		cin>>t;
 		if(t<0) white_print("输入错误 请输入正数\n\n"); //cout<<"输入错误，请输入正数！"<<endl<<endl;
-		else if(t-(int)t==0) break;
+		else if(t-(unsigned long long)t==0) break;
 		//else cout<<"Wrong input,please try again and enter an integer!"<<endl<<endl;
 		else white_print("输入错误 请输入整数\n\n"); //cout<<"输入错误，请输入整数！"<<endl<<endl;
 	}
-	n=(int)t;
-	char a[n];
+	n=(unsigned long long)t;
 	text(n);
 	//cout<<"闪光点：";
 	white_print("闪光点：");
