@@ -3,12 +3,14 @@
 #include <bits/stdc++.h>
 #include <fstream>
 #include <time.h>
-#include <string>
+//#include <cstring>
 #include <conio.h>
 #include <stdlib.h>
 //#include "stdafx.h"
 #include <cstdlib>
+
 using namespace std;
+
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 unsigned long long n;
@@ -42,7 +44,7 @@ void information() {
 	//cout<<"Source Code Address:https://github.com/quxianp/Cotton_Introduces-the-Shining-Points/"<<endl;
 	green_print("Source Code Address:https://github.com/quxianp/Cotton_Introduces-the-Shining-Points/",1);
 	//cout<<"Cotton_Introduces-the-Shining-Points v1.2"<<endl;
-	green_print("Cotton_Introduces-the-Shining-Points v2.2",1);
+	green_print("Cotton_Introduces-the-Shining-Points v2.3",1);
 	//cout<<"Now Time:";
 	green_print("Now Time:",0);
 	//printf("%d/%d/%d %02d:%02d:%02d\n\n", 1900 + p->tm_year, 1+ p->tm_mon, p->tm_mday,p->tm_hour, p->tm_min, p->tm_sec);
@@ -97,28 +99,37 @@ void PrintHistory() {
 	ifs.close();
 }
 
+void CleanHistory() {
+	ofstream fileout("dataFile.ini",ios::trunc);
+	cout << "==========================\n\n\n清除成功！\n\n\n=========================="<<endl<<endl;
+}
+
 void History() {
-	int ks=0;
-	cout<<"\033[35;1m*是否查看历史记录？*\033[0m"<<endl<<"\033[35;1m*按下Enter键查看历史记录*\033[0m"<<endl<<"\033[35;1m*按下ESC键进入主程序*\033[0m"<<endl<<"\033[35;1m*按下Tab键退出程序*\033[0m"<<endl<<endl;
+	bool ks=false;
+	cout<<"\033[35;1m*是否查看历史记录？*\033[0m"<<endl;
+	cout<<"\033[35;1m*按下Enter键查看历史记录*\033[0m"<<endl;
+	cout<<"\033[35;1m*按下BackSpace键清除历史记录*\033[0m"<<endl;
+	cout<<"\033[35;1m*按下Tab键退出程序*\033[0m"<<endl;
+	cout<<"\033[35;1m*按下ESC键进入主程序*\033[0m"<<endl<<endl;
 	while (0!=1) {
 		if (_kbhit()) {
 			ch = _getch();
 			if (ch == 27) break;
 			if (ch == 9) exit(0);
-			if(ks==0) {
+			if(ks==false) {
 				if (ch == 13) {
 					PrintHistory();
-					ks=1;
+					ks=true;
 				}
 			}
-
+			if (ch == 8) CleanHistory();
 		}
 	}
 }
 
 int main(int argc, char** argv) {
 	Decide();
-	system("title Introduce_Your_Shining_Point_to_Your_Group-v2.2");
+	system("title Introduce_Your_Shining_Point_to_Your_Group-v2.3");
 	//CreateDirectory(TEXT("Memories"),NULL);
 	//system("color 0A"); //淡绿色
 	information();
