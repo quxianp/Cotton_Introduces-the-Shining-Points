@@ -1,5 +1,5 @@
 # Project: 向群友介绍你的闪光点
-# Makefile created by Dev-C++ 5.11
+# Makefile created by Embarcadero Dev-C++ 6.3
 
 CPP      = g++.exe
 CC       = gcc.exe
@@ -7,20 +7,20 @@ WINDRES  = windres.exe
 RES      = 向群友介绍你的闪光点_private.res
 OBJ      = 向群友介绍你的闪光点.o $(RES)
 LINKOBJ  = 向群友介绍你的闪光点.o $(RES)
-LIBS     = -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
-INCS     = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
-CXXINCS  = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+LIBS     = -L"D:/Embarcadero/Dev-Cpp/TDM-GCC-64/lib" -L"D:/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"D:/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"D:/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"D:/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include"
+CXXINCS  = -I"D:/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"D:/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"D:/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"D:/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++"
 BIN      = 向群友介绍你的闪光点.exe
-CXXFLAGS = $(CXXINCS) 
-CFLAGS   = $(INCS) 
-RM       = rm.exe -f
+CXXFLAGS = $(CXXINCS) -fexec-charset=GBK -finput-charset=UTF-8
+CFLAGS   = $(INCS) -fexec-charset=GBK -finput-charset=UTF-8
+DEL      = D:\Embarcadero\Dev-Cpp\DevCpp.exe INTERNAL_DEL
 
 .PHONY: all all-before all-after clean clean-custom
 
 all: all-before $(BIN) all-after
 
 clean: clean-custom
-	${RM} $(OBJ) $(BIN)
+	${DEL} $(OBJ) $(BIN)
 
 $(BIN): $(OBJ)
 	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)

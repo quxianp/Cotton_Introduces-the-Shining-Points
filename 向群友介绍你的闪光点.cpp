@@ -7,15 +7,12 @@
 #include <conio.h>
 #include <stdlib.h>
 //#include "stdafx.h"
-#include <cstdlib>
+//#include <cstdlib>
+#include <filesystem>
 
 using namespace std;
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
-
-unsigned long long n;
-int ch;
-long double t;
 
 void white_print(string out) {
 	cout << "\033[37;1m" << out << "\033[0m" ;
@@ -36,15 +33,18 @@ void green_print(string out,int a) {
 	if(a==1) cout<<endl;
 }
 
-void information() {
+void information(char** argv) {
 	time_t timep;
 	struct tm *p;
 	time(&timep);
 	p=localtime(&timep);
 	//cout<<"Source Code Address:https://github.com/quxianp/Cotton_Introduces-the-Shining-Points/"<<endl;
 	green_print("Source Code Address:https://github.com/quxianp/Cotton_Introduces-the-Shining-Points/",1);
-	//cout<<"Cotton_Introduces-the-Shining-Points v1.2"<<endl;
-	green_print("Cotton_Introduces-the-Shining-Points v2.3",1);
+	//cout<<"Cotton_Introduces-the-Shining-Points vX.X"<<endl;
+	green_print("Cotton_Introduces-the-Shining-Points v2.4",1);
+	//cout<<"Current path:"<<endl;
+	green_print("Current path:",0);
+	cout<<"\033[32;1m"<<argv[0]<<"\033[0m"<<endl;
 	//cout<<"Now Time:";
 	green_print("Now Time:",0);
 	//printf("%d/%d/%d %02d:%02d:%02d\n\n", 1900 + p->tm_year, 1+ p->tm_mon, p->tm_mday,p->tm_hour, p->tm_min, p->tm_sec);
@@ -81,7 +81,7 @@ void PrintHistory() {
 	char c;
 	ifs >> c;
 	if (ifs.eof()) {
-		cout << "==========================\n\n\nÔÝÎÞÏà¹Ø¼ÇÂ¼£¡\n\n\n=========================="<<endl;
+		cout << "==========================\n\n\næš‚æ— ç›¸å…³è®°å½•ï¼\n\n\n=========================="<<endl;
 		ifs.close();
 		return;
 	} else {
@@ -101,16 +101,17 @@ void PrintHistory() {
 
 void CleanHistory() {
 	ofstream fileout("dataFile.ini",ios::trunc);
-	cout << "==========================\n\n\nÇå³ý³É¹¦£¡\n\n\n=========================="<<endl<<endl;
+	cout << "==========================\n\n\næ¸…é™¤æˆåŠŸï¼\n\n\n=========================="<<endl<<endl;
 }
 
 void History() {
+	int ch;
 	bool ks=false;
-	cout<<"\033[35;1m*ÊÇ·ñ²é¿´ÀúÊ·¼ÇÂ¼£¿*\033[0m"<<endl;
-	cout<<"\033[35;1m*°´ÏÂEnter¼ü²é¿´ÀúÊ·¼ÇÂ¼*\033[0m"<<endl;
-	cout<<"\033[35;1m*°´ÏÂBackSpace¼üÇå³ýÀúÊ·¼ÇÂ¼*\033[0m"<<endl;
-	cout<<"\033[35;1m*°´ÏÂTab¼üÍË³ö³ÌÐò*\033[0m"<<endl;
-	cout<<"\033[35;1m*°´ÏÂESC¼ü½øÈëÖ÷³ÌÐò*\033[0m"<<endl<<endl;
+	cout<<"\033[35;1m*æ˜¯å¦æŸ¥çœ‹åŽ†å²è®°å½•ï¼Ÿ*\033[0m"<<endl;
+	cout<<"\033[35;1m*æŒ‰ä¸‹Enteré”®æŸ¥çœ‹åŽ†å²è®°å½•*\033[0m"<<endl;
+	cout<<"\033[35;1m*æŒ‰ä¸‹BackSpaceé”®æ¸…é™¤åŽ†å²è®°å½•*\033[0m"<<endl;
+	cout<<"\033[35;1m*æŒ‰ä¸‹Tabé”®é€€å‡ºç¨‹åº*\033[0m"<<endl;
+	cout<<"\033[35;1m*æŒ‰ä¸‹ESCé”®è¿›å…¥ä¸»ç¨‹åº*\033[0m"<<endl<<endl;
 	while (0!=1) {
 		if (_kbhit()) {
 			ch = _getch();
@@ -128,31 +129,34 @@ void History() {
 }
 
 int main(int argc, char** argv) {
+	unsigned long long n;
+	long double t;
 	Decide();
-	system("title Introduce_Your_Shining_Point_to_Your_Group-v2.3");
+	system("title Introduce_Your_Shining_Point_to_Your_Group-v2.4");
 	//CreateDirectory(TEXT("Memories"),NULL);
-	//system("color 0A"); //µ­ÂÌÉ«
-	information();
+	//system("color 0A"); //æ·¡ç»¿è‰²
+	information(argv);
 	History();
-	system("CLS"); //ÇåÆÁ
-	//system("color 0B"); //Ç³ÂÌÉ«
-	information();
-	//system("color 0F"); //ÁÁ°×É«
+	system("CLS"); //æ¸…å±
+	//system("color 0B"); //æµ…ç»¿è‰²
+	information(argv);
+	//system("color 0F"); //äº®ç™½è‰²
 	while(1!=2) {
-		//cout<<"ÄãÒªÏòÈºÓÑ½éÉÜ¶àÉÙ¸öÉÁ¹âµã£º";
-		white_print("ÄãÒªÏòÈºÓÑ½éÉÜ¶àÉÙ¸öÉÁ¹âµã£¨0¡Ü¸öÊý¡Ü9223372036854775807£©£º");
+		//cout<<"ä½ è¦å‘ç¾¤å‹ä»‹ç»å¤šå°‘ä¸ªé—ªå…‰ç‚¹ï¼š";
+		white_print("ä½ è¦å‘ç¾¤å‹ä»‹ç»å¤šå°‘ä¸ªé—ªå…‰ç‚¹ï¼ˆ0â‰¤ä¸ªæ•°â‰¤9223372036854775807ï¼‰ï¼š");
 		cin>>t;
-		if(t<0) white_print("ÊäÈë´íÎó ÇëÊäÈëÕýÊý\n\n"); //cout<<"ÊäÈë´íÎó£¬ÇëÊäÈëÕýÊý£¡"<<endl<<endl;
+		if(t<0) white_print("è¾“å…¥é”™è¯¯ è¯·è¾“å…¥æ­£æ•°\n\n"); //cout<<"è¾“å…¥é”™è¯¯ï¼Œè¯·è¾“å…¥æ­£æ•°ï¼"<<endl<<endl;
 		else if(t-(unsigned long long)t==0) break;
 		//else cout<<"Wrong input,please try again and enter an integer!"<<endl<<endl;
-		else white_print("ÊäÈë´íÎó ÇëÊäÈëÕûÊý\n\n"); //cout<<"ÊäÈë´íÎó£¬ÇëÊäÈëÕûÊý£¡"<<endl<<endl;
+		else white_print("è¾“å…¥é”™è¯¯ è¯·è¾“å…¥æ•´æ•°\n\n"); //cout<<"è¾“å…¥é”™è¯¯ï¼Œè¯·è¾“å…¥æ•´æ•°ï¼"<<endl<<endl;
 	}
 	n=(unsigned long long)t;
 	text(n);
-	//cout<<"ÉÁ¹âµã£º";
-	white_print("ÉÁ¹âµã£º");
+	//cout<<"é—ªå…‰ç‚¹ï¼š";
+	white_print("é—ªå…‰ç‚¹ï¼š");
 	Shining_Point(n);
 	cout<<endl<<endl;
+
 	system("pause");
 	return 0;
 }
