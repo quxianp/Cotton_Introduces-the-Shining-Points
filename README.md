@@ -22,6 +22,8 @@
 
 2023-5-27 支持按下BackSpace键清除历史记录
 
+2023-5-30 支持输出当前可执行文件绝对路径
+
 ---
 
 > https://user-images.githubusercontent.com/123958112/227768522-a9c1eeab-ecf5-41fd-8328-20f2f5706abb.mp4
